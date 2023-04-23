@@ -3,12 +3,13 @@ use std::net::{TcpListener, TcpStream};
 use std::thread;
 
 fn handle_client(mut stream: TcpStream) {
-    let mut buf = Vec::new();
+    let mut buf = [0; 1024];
 
     loop {
-        match stream.read_to_end(&mut buf) {
-            Ok(_) => {
-                if let Err(e) = stream.write_all(&buf) {
+        match stream.read(&mut buf) {
+            Ok(n) if n == 0 => return,
+            Ok(n) => {
+                if let Err(e) = stream.write_all(&buf[..n]) {
                     eprintln!("Error writing to socket: {:?}", e);
                     return;
                 }
@@ -32,6 +33,7 @@ pub fn runserver() -> () {
     println!("Running on {}", addr);
 
     for conn in listener.incoming() {
+        println!("Connected!");
         match conn {
             Ok(stream) => {
                 thread::spawn(move || {
