@@ -1,14 +1,14 @@
 #+title: protohackers.com solutions
 #+startup: overview
 
-Solutions for https://protohackers.com exercises
+[WIP] Solutions for https://protohackers.com exercises
 
 * 00 Smoke Test
 
 TCP server that echoes back
 
 #+begin_src shell
-cargo run
+cargo run 0
 #+end_src
 
 To test

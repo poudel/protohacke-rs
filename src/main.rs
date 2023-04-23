@@ -1,5 +1,43 @@
+use std::env;
 mod smoketest;
 
+fn help() {
+    println!(
+        "usage:
+proto <exercise-number>
+"
+    )
+}
+
 fn main() {
-    smoketest::runserver();
+    // https://doc.rust-lang.org/rust-by-example/std_misc/arg/matching.html
+    let args: Vec<String> = env::args().collect();
+
+    match args.len() {
+        2 => {
+            let ex = &args[1];
+
+            match ex.parse() {
+                Ok(n) => {
+                    let exercise_func = match n {
+                        0 => smoketest::runserver,
+
+                        // print help if it doesn't match
+                        _ => help,
+                    };
+                    // run the exercise func
+                    exercise_func();
+                }
+                Err(_) => {
+                    help();
+                    return;
+                }
+            };
+        }
+
+        _ => {
+            help();
+            return;
+        }
+    }
 }
