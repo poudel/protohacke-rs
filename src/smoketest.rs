@@ -23,7 +23,7 @@ fn handle_client(mut stream: TcpStream) {
 }
 
 pub fn runserver() -> () {
-    let addr = "127.0.0.1:8838";
+    let addr = "0.0.0.0:8838";
 
     // unwrap() will crash if bind returns an Error
     // but this is tolerable
