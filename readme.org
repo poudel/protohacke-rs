@@ -1,0 +1,18 @@
+#+title: protohackers.com solutions
+#+startup: overview
+
+Solutions for https://protohackers.com exercises
+
+* 00 Smoke Test
+
+TCP server that echoes back
+
+#+begin_src shell
+cargo run
+#+end_src
+
+To test
+
+#+begin_src shell
+nc 127.0.0.1 8838
+#+end_src
