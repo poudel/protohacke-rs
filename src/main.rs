@@ -1,4 +1,5 @@
 use std::env;
+mod primetime;
 mod smoketest;
 
 fn help() {
@@ -21,7 +22,7 @@ fn main() {
                 Ok(n) => {
                     let exercise_func = match n {
                         0 => smoketest::runserver,
-
+                        1 => primetime::runserver,
                         // print help if it doesn't match
                         _ => help,
                     };

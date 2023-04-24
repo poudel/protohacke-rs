@@ -3,7 +3,8 @@
 
 [WIP] Solutions for https://protohackers.com exercises
 
-* 00 Smoke Test
+
+* [[https://protohackers.com/problem/0][00 Smoke Test]]
 
 TCP server that echoes back
 
@@ -16,3 +17,27 @@ To test
 #+begin_src shell
 nc 127.0.0.1 8838
 #+end_src
+
+
+* [[https://protohackers.com/problem/1][01 Prime time]]
+
+Industrial strength primality tester
+
+#+begin_src shell
+cargo run 1
+#+end_src
+
+To test
+
+#+begin_src shell
+nc 127.0.0.1 8838
+#+end_src
+
+
+* Notes
+
+#+begin_src shell
+rsync -avz --exclude-from '.gitignore' ./ remoteuser@remoteserver:/path/to/remote/directory
+#+end_src
+
+
