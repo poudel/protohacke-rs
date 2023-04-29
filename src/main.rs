@@ -3,6 +3,7 @@ mod budget_chat;
 mod means_to_an_end;
 mod primetime;
 mod smoketest;
+mod unusual_db;
 
 fn help() {
     println!(
@@ -27,6 +28,7 @@ fn main() {
                         1 => primetime::runserver,
                         2 => means_to_an_end::runserver,
                         3 => budget_chat::runserver,
+                        4 => unusual_db::runserver,
                         // print help if it doesn't match
                         _ => help,
                     };

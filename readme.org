@@ -70,6 +70,22 @@ nc 127.0.0.1 8838
 
 and again to chat!
 
+
+* [[https://protohackers.com/problem/4][04 Unusual Database Program]]
+
+Build and run as follows
+
+#+begin_src shell
+cargo run 4
+#+end_src
+
+Then connect with
+
+#+begin_src shell
+nc -u 127.0.0.1 8838
+#+end_src
+
+
 * Notes
 
 #+begin_src shell
