@@ -34,6 +34,29 @@ nc 127.0.0.1 8838
 #+end_src
 
 
+* [[https://protohackers.com/problem/2][02 Means to an End]]
+
+#+begin_src shell
+cargo run 2
+#+end_src
+
+To test it quickly
+
+#+begin_src shell
+python src/means_client.py
+#+end_src
+
+then type the messages as:
+
+#+begin_src shell
+I,1,1|I,2,2|Q,1,2
+#+end_src
+
+where messages are delimited by pipe and each message is delimited by
+comma. The script then sends an encoded message to the running server
+and prints the result of `Q`. 
+
+
 * Notes
 
 #+begin_src shell

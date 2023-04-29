@@ -1,4 +1,5 @@
 use std::env;
+mod means_to_an_end;
 mod primetime;
 mod smoketest;
 
@@ -23,6 +24,7 @@ fn main() {
                     let exercise_func = match n {
                         0 => smoketest::runserver,
                         1 => primetime::runserver,
+                        2 => means_to_an_end::runserver,
                         // print help if it doesn't match
                         _ => help,
                     };
