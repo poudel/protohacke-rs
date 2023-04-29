@@ -56,6 +56,19 @@ where messages are delimited by pipe and each message is delimited by
 comma. The script then sends an encoded message to the running server
 and prints the result of `Q`. 
 
+* [[https://protohackers.com/problem/3][03 Budget Chat]]
+
+#+begin_src shell
+cargo run 3
+#+end_src
+
+Then connect with
+
+#+begin_src shell
+nc 127.0.0.1 8838
+#+end_src
+
+and again to chat!
 
 * Notes
 

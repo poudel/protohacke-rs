@@ -1,4 +1,5 @@
 use std::env;
+mod budget_chat;
 mod means_to_an_end;
 mod primetime;
 mod smoketest;
@@ -25,6 +26,7 @@ fn main() {
                         0 => smoketest::runserver,
                         1 => primetime::runserver,
                         2 => means_to_an_end::runserver,
+                        3 => budget_chat::runserver,
                         // print help if it doesn't match
                         _ => help,
                     };
