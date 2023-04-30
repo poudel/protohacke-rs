@@ -86,6 +86,27 @@ nc -u 127.0.0.1 8838
 #+end_src
 
 
+* [[https://protohackers.com/problem/5][05 Mob in the Middle]]
+
+Run the unusual budget chat with 
+
+#+begin_src shell
+cargo run 3
+#+end_src
+
+then run this
+
+#+begin_src shell
+cargo run 5
+#+end_src
+
+Then connect with
+
+#+begin_src shell
+nc -u 127.0.0.1 8839
+#+end_src
+
+
 * Notes
 
 #+begin_src shell
