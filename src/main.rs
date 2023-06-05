@@ -1,9 +1,14 @@
+#![allow(unused_must_use)]
+#![allow(warnings)]
+
 use std::env;
 mod budget_chat;
 mod means_to_an_end;
 mod mob_in_the_middle;
 mod primetime;
+mod scratch;
 mod smoketest;
+mod speed_daemon;
 mod unusual_db;
 
 fn help() {
@@ -31,6 +36,9 @@ fn main() {
                         3 => budget_chat::runserver,
                         4 => unusual_db::runserver,
                         5 => mob_in_the_middle::runserver,
+                        6 => speed_daemon::runserver,
+                        100 => scratch::runscratch,
+
                         // print help if it doesn't match
                         _ => help,
                     };

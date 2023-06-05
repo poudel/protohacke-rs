@@ -9,3 +9,7 @@ edition = "2021"
 serde_json = "1.0"
 serde = {version = "1.0", features = ["derive"]}
 regex = "1"
+tokio = {version = "1", features = ["full"]}
+anyhow = {version = "1"}
+chrono = {version = "0.4.26"}
+itertools = {version = "0.10.5"}

@@ -16,7 +16,10 @@ fn handle_client(stream: TcpStream, send: mpsc::Sender<ChatMsg>) {
     let mut username: String = String::from("<anon>");
 
     // ask for the username first
-    writer.write(&String::from("Welcome to budgetchat! What shall I call you?\n").as_bytes());
+    writer.write(
+        &String::from("Welcome to budgetchat! What shall I call you?\n")
+            .as_bytes(),
+    );
     writer.flush();
 
     for row in reader.lines() {
@@ -29,7 +32,9 @@ fn handle_client(stream: TcpStream, send: mpsc::Sender<ChatMsg>) {
 
                 // set the username if not done yet but validate it first
                 if msg.len() == 0 || !msg.chars().all(char::is_alphanumeric) {
-                    writer.write(format!("Invalid username, {:?}\n", msg).as_bytes());
+                    writer.write(
+                        format!("Invalid username, {:?}\n", msg).as_bytes(),
+                    );
                     writer.flush();
                     break;
                 }
@@ -67,7 +72,9 @@ fn chatmaster(recv: mpsc::Receiver<ChatMsg>) {
                         format!("{}, {}", x, y)
                     }
                 });
-                stream.write(format!("* The room contains: {}\n", usernames).as_bytes());
+                stream.write(
+                    format!("* The room contains: {}\n", usernames).as_bytes(),
+                );
 
                 registry.insert(username.clone(), stream);
 
@@ -89,8 +96,9 @@ fn chatmaster(recv: mpsc::Receiver<ChatMsg>) {
 
                 registry.remove(&username);
 
-                for (u, mut s) in &registry {
-                    let outgoing = format!("* {} has left the room\n", username);
+                for (_u, mut s) in &registry {
+                    let outgoing =
+                        format!("* {} has left the room\n", username);
 
                     println!("{}", outgoing);
                     s.write(outgoing.as_bytes());

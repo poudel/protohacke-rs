@@ -107,6 +107,19 @@ nc -u 127.0.0.1 8839
 #+end_src
 
 
+
+* [[https://protohackers.com/problem/6][06 Speed Daemon]]
+
+#+begin_src shell
+cargo run 6
+#+end_src
+
+to test
+
+#+begin_src shell
+python src/speed_daemon/client.py c1 c2 d
+#+end_src
+
 * Notes
 
 #+begin_src shell

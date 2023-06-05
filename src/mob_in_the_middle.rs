@@ -1,10 +1,8 @@
 use regex::Regex;
-use std::collections::HashMap;
-use std::io::{BufRead, BufReader, BufWriter, Read, Write};
+use std::io::{Read, Write};
 use std::net::{TcpListener, TcpStream};
 use std::ops::Deref;
-use std::str;
-use std::thread;
+use std::{str, thread};
 
 fn proxy(mut downstream: TcpStream, mut upstream: TcpStream) {
     // make both streams non-blocking
@@ -16,7 +14,8 @@ fn proxy(mut downstream: TcpStream, mut upstream: TcpStream) {
         .expect("set_nonblocking failed upstream");
 
     let coin_addr = "${b1}7YWHMfk9JZe0LM0g1ZauHuiSxhI${b2}";
-    let re = Regex::new(r"(?P<b1>^|\s|\b)(?P<k>7[\d\w]{25,34})(?P<b2>\s|$)").unwrap();
+    let re = Regex::new(r"(?P<b1>^|\s|\b)(?P<k>7[\d\w]{25,34})(?P<b2>\s|$)")
+        .unwrap();
 
     // collect message from downstream so that we can overwrite the address
     let mut msg_from_downstream: Vec<u8> = Vec::new();
@@ -25,7 +24,10 @@ fn proxy(mut downstream: TcpStream, mut upstream: TcpStream) {
 
     loop {
         if msg_from_downstream.contains(&('\n' as u8)) {
-            let after = re.replace_all(&str::from_utf8(&msg_from_downstream).unwrap(), coin_addr);
+            let after = re.replace_all(
+                &str::from_utf8(&msg_from_downstream).unwrap(),
+                coin_addr,
+            );
 
             upstream.write_all(&after.deref().as_bytes());
             upstream.flush();
@@ -33,7 +35,10 @@ fn proxy(mut downstream: TcpStream, mut upstream: TcpStream) {
         }
 
         if msg_from_upstream.contains(&('\n' as u8)) {
-            let after = re.replace_all(&str::from_utf8(&msg_from_upstream).unwrap(), coin_addr);
+            let after = re.replace_all(
+                &str::from_utf8(&msg_from_upstream).unwrap(),
+                coin_addr,
+            );
             downstream.write_all(&after.deref().as_bytes());
             downstream.flush();
             msg_from_upstream.clear();
